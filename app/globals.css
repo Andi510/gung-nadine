@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+body {
+  background-color: #050510;
+  color: white;
+  overflow-x: hidden;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: fall linear infinite, twinkle ease-in-out infinite;
+  box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.4);
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-10vh) translateX(0);
+  }
+  to {
+    transform: translateY(110vh) translateX(-20vw);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
