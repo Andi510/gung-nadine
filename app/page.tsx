@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 import { Heart, Music } from "lucide-react";
 
 const photos = [
-  { src: "/a.jPEG", quote: "berawal darii pertama kali kitaa chat an, yang awalnya aku ndaa ada kepikiran kalo kamu bakal chat aku, ternyataa pucuk dicinta ulam pun tibaa asikkk" },
+  { src: "/a.JPEG", quote: "berawal darii pertama kali kitaa chat an, yang awalnya aku ndaa ada kepikiran kalo kamu bakal chat aku, ternyataa pucuk dicinta ulam pun tibaa asikkk" },
   { src: "/b.jpg", quote: "padahall belum adaa hubungann tapii udahh jogingg bareng wkkww, jujurr akuu seneng banget + akuu bingung ngobrolnyaa kaya gimnaa, tapi jujurr seneng hehe" },
   { src: "/c.jpeg", quote: "awall kitaa first date, jujurr niee jujurr tegangg sama kepikiran gimana cara ngungkapin perasaan kuu wkwkw" },
   {
