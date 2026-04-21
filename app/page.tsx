@@ -1,21 +1,30 @@
 "use client";
 
-import { useState, useRef } from 'react';
-import StarryBackground from '@/components/StarryBackground';
-import { motion } from 'motion/react';
-import { Heart, Music } from 'lucide-react';
+import { useState, useRef } from "react";
+import StarryBackground from "@/components/StarryBackground";
+import { motion } from "motion/react";
+import { Heart, Music } from "lucide-react";
 
 const photos = [
-  { src: '/a.jpg', quote: 'Senyummu adalah candu bagiku.' },
-  { src: '/b.jpg', quote: 'Bersamamu, setiap detik adalah keajaiban.' },
-  { src: '/c.jpg', quote: 'Kamu adalah alasan di balik tawaku hari ini.' },
-  { src: '/d.jpg', quote: 'Mencintaimu adalah hal termudah yang pernah kulakukan.' },
-  { src: '/e.jpg', quote: 'Di matamu, aku menemukan rumah.' },
-  { src: '/f.jpg', quote: 'Kamu adalah doa yang dikabulkan oleh semesta.' },
-  { src: '/g.jpg', quote: 'Tak ada tempat yang lebih indah selain di sampingmu.' },
-  { src: '/h.jpg', quote: 'Genggam tanganku, dan mari kita taklukkan dunia bersama.' },
-  { src: '/i.jpg', quote: 'Kamu adalah puisi terindah yang pernah kutulis.' },
-  { src: '/j.jpg', quote: 'Aku memilihmu, hari ini, esok, dan selamanya.' },
+  { src: "/a.jPEG", quote: "berawal darii pertama kali kitaa chat an, yang awalnya aku ndaa ada kepikiran kalo kamu bakal chat aku, ternyataa pucuk dicinta ulam pun tibaa asikkk" },
+  { src: "/b.jpg", quote: "padahall belum adaa hubungann tapii udahh jogingg bareng wkkww, jujurr akuu seneng banget + akuu bingung ngobrolnyaa kaya gimnaa, tapi jujurr seneng hehe" },
+  { src: "/c.jpeg", quote: "awall kitaa first date, jujurr niee jujurr tegangg sama kepikiran gimana cara ngungkapin perasaan kuu wkwkw" },
+  {
+    src: "/d.jpeg",
+    quote: "senengg bangett rasanyaa bisaa fotoo barengg kamuu, walaupun posisinya kita belum ada hubungan sih wkkww cuma deket aja hehe",
+  },
+  { src: "/e.jpeg", quote: "foto pertama yangg kamu kirimm kee akuu, yaa walaupunn akuu yang minta sihh bukan inisiatif muu wkwkw tapi takpee" },
+  { src: "/f.jpeg", quote: "om om datee pertamaa wkwkw, walaupun sampee goa lawah tapii seruu bisaa motoran banreng kamu, pulangnya maem dehh hehe" },
+  {
+    src: "/g.jpg",
+    quote: "awall kitaa jadiann hehee, tanggal 12 november 2025 wkwkw, aman ajaa inget aku mahh, disinii seneng bangett bisaa keluarr sama kamuu maem bareng maa kamuu hiii",
+  },
+  {
+    src: "/h.jpeg",
+    quote: "papp adatt kamuu tercuantikk bagii akuu hehehee",
+  },
+  { src: "/i.jpeg", quote: "pap yangg palingg bagusss cantikk bestt dehh wkwkwk" },
+  { src: "/j.jpeg", quote: "akuu seneng bangett bahagia banget bisa kenal kamuu, bisa ngelakuin suatu hal bareng kamu, i lovee you bb" },
 ];
 
 export default function Page() {
@@ -26,9 +35,12 @@ export default function Page() {
   const handleStart = () => {
     setStarted(true);
     if (audioRef.current) {
-      audioRef.current.play().then(() => {
-        setIsPlaying(true);
-      }).catch(e => console.log("Audio play failed:", e));
+      audioRef.current
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((e) => console.log("Audio play failed:", e));
     }
   };
 
@@ -46,7 +58,7 @@ export default function Page() {
   return (
     <main className="min-h-screen font-sans text-white selection:bg-pink-500/30">
       <StarryBackground />
-      
+
       {/* Audio element - hidden */}
       <audio ref={audioRef} src="/music.mp3" loop />
 
@@ -65,84 +77,116 @@ export default function Page() {
               className="flex flex-col items-center gap-6 p-10 rounded-3xl bg-white/5 hover:bg-white/10 transition-all border border-white/10 shadow-[0_0_40px_rgba(236,72,153,0.2)]"
             >
               <motion.div
-                animate={{ 
+                animate={{
                   scale: [1, 1.2, 1],
                 }}
-                transition={{ 
-                  duration: 2, 
+                transition={{
+                  duration: 2,
                   repeat: Infinity,
-                  ease: "easeInOut" 
+                  ease: "easeInOut",
                 }}
               >
-                <Heart className="w-20 h-20 text-pink-500 drop-shadow-[0_0_15px_rgba(236,72,153,0.5)]" fill="currentColor" />
+                <Heart
+                  className="w-20 h-20 text-white drop-shadow-[0_0_15px_rgba(236,72,153,0.5)]"
+                  fill="currentColor"
+                />
               </motion.div>
               <div className="space-y-2">
-                <span className="block text-2xl font-serif italic text-pink-100">Ada sesuatu untukmu...</span>
-                <span className="block text-sm text-gray-400 tracking-widest uppercase">Klik untuk membuka</span>
+                <span className="block text-2xl font-serif italic text-pink-100">
+                  Ada sesuatu untukmu...
+                </span>
+                <span className="block text-sm text-gray-400 tracking-widest uppercase">
+                  Klik untuk membuka
+                </span>
               </div>
             </motion.button>
           </motion.div>
         </div>
       ) : (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
           className="container mx-auto px-4 py-20 max-w-5xl relative"
         >
           {/* Music Toggle Button */}
-          <button 
+          <button
             onClick={toggleMusic}
             className="fixed top-6 right-6 z-40 p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-colors"
             title={isPlaying ? "Pause Music" : "Play Music"}
           >
-            <Music className={`w-6 h-6 ${isPlaying ? 'animate-pulse text-pink-400' : 'text-gray-400'}`} />
+            <Music
+              className={`w-6 h-6 ${isPlaying ? "animate-pulse text-pink-400" : "text-gray-400"}`}
+            />
           </button>
 
           <div className="text-center mb-32 space-y-8 mt-10">
-            <motion.h1 
+            <motion.h1
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 1, duration: 1.5 }}
               className="text-5xl md:text-7xl font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-pink-300 drop-shadow-lg"
             >
-              Untuk Kamu, Cintaku
+              Kisah Ratu Anom bertemu, asikkk
             </motion.h1>
-            <motion.div 
+            <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 2, duration: 1.5 }}
               className="max-w-3xl mx-auto relative"
             >
-              <div className="absolute -top-6 -left-6 text-6xl text-pink-500/20 font-serif">"</div>
+              <div className="absolute -top-6 -left-6 text-6xl text-pink-500/20 font-serif">
+                "
+              </div>
               <p className="text-xl md:text-2xl text-gray-200 leading-relaxed font-light italic z-10 relative px-8">
-                Sejak pertama kali bertemu, aku tahu ada sesuatu yang istimewa. Kamu bukan hanya sekadar pasangan, tapi juga sahabat, tempat bersandar, dan rumah bagiku. Terima kasih telah hadir dan mewarnai hidupku dengan cinta yang begitu tulus. Aku mencintaimu lebih dari kata-kata yang bisa kuucapkan.
+                nahh awalnya nih, awalnya, kita ga saling kenal, gatau kenapa
+                tiba tiba aja dipasangin jadi Paslon Ketos Waketos, waktu itu
+                aku juga ga espek, trus tiba tiba ada men nomer tidak di kenal
+                ngechat katanya “kakgung ini nadine” aku belum baca itu, pas
+                baca aku mikir lah ngapain ni anak, ternyata bahas visi misinya
+                wkwkw. <br /> <br />
+                singkat cerita pas hari debat, aku mulai notice kamu. Cara kamu
+                ngomong, sama jawab pertanyaan… jujur nie izinn bikin kagum sih
+                hehe. Nah dari situ kayak, wah keren nih anak. <br /> <br />
+                ya walaupun ngga menang wkwkw, tapi tetap lanjut di osis inti,
+                yaa jadi bendahara bareng. Nah disitu kita jadi sering chat,
+                sering ketemu kann nah deket lah kita, buset wkwk, walaupun itu
+                jual mahal dikit ya wajar kan cewe hehe. <br /> <br />
+                nah sampe pas udah deket banget nih, kaya pngen aja rasanya
+                ngajak keluar jujurr nii, belum ada pengen nyatain aku takut aja
+                nanti kmu nolak, tapi pas di jalan aku harus berani nih asikk,
+                yehh di terima buset.
               </p>
-              <div className="absolute -bottom-10 -right-6 text-6xl text-pink-500/20 font-serif">"</div>
+              <div className="absolute -bottom-10 -right-6 text-6xl text-pink-500/20 font-serif">
+                "
+              </div>
             </motion.div>
           </div>
 
           <div className="space-y-40">
             {photos.map((photo, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 100 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 1.2, ease: "easeOut" }}
-                className={`flex flex-col md:flex-row items-center gap-12 lg:gap-20 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
+                className={`flex flex-col md:flex-row items-center gap-12 lg:gap-20 ${index % 2 === 1 ? "md:flex-row-reverse" : ""}`}
               >
                 <div className="w-full md:w-1/2 relative group">
-                  <div className={`absolute inset-0 bg-gradient-to-tr from-pink-500/30 to-purple-500/30 rounded-3xl transform ${index % 2 === 0 ? 'rotate-3 group-hover:rotate-6' : '-rotate-3 group-hover:-rotate-6'} transition-transform duration-700 blur-sm`}></div>
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-tr from-pink-500/30 to-purple-500/30 rounded-3xl transform ${index % 2 === 0 ? "rotate-3 group-hover:rotate-6" : "-rotate-3 group-hover:-rotate-6"} transition-transform duration-700 blur-sm`}
+                  ></div>
                   <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-white/20 bg-gray-900 shadow-2xl">
                     {/* Fallback image logic */}
-                    <img 
-                      src={photo.src} 
+                    <img
+                      src={photo.src}
                       alt={`Kenangan ${index + 1}`}
                       className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-1000 ease-out"
                       onError={(e) => {
                         // Fallback to picsum if local image not found
-                        (e.target as HTMLImageElement).src = `https://picsum.photos/seed/${index + 20}/800/1000`;
+                        (e.target as HTMLImageElement).src =
+                          `https://picsum.photos/seed/${index + 20}/800/1000`;
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -165,7 +209,7 @@ export default function Page() {
             ))}
           </div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -176,13 +220,16 @@ export default function Page() {
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <Heart className="w-16 h-16 text-pink-500 mx-auto mb-8 drop-shadow-[0_0_20px_rgba(236,72,153,0.6)]" fill="currentColor" />
+              <Heart
+                className="w-16 h-16 text-white mx-auto mb-8 drop-shadow-[0_0_20px_rgba(236,72,153,0.6)]"
+                fill="currentColor"
+              />
             </motion.div>
             <p className="text-4xl md:text-6xl font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-purple-300">
-              I Love You, Selamanya.
+              I Love You So Much
             </p>
             <p className="mt-6 text-gray-400 font-light tracking-widest text-sm uppercase">
-              Terima kasih telah menjadi bagian dari hidupku
+              Suksemaa Rahayuuuuu🙏🙏
             </p>
           </motion.div>
         </motion.div>
